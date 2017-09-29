@@ -63,6 +63,25 @@
         reset-gpios = <&pio 6 13 GPIO_ACTIVE_LOW>;          // GPIOG13/WL_RESTN
         post-power-on-delay-ms = <50>;
     };
+
+    sound0: sound0@0 {
+        status = "okay";
+        compatible = "simple-audio-card";
+        simple-audio-card,name = "cx2092x";
+        simple-audio-card,format = "i2s";
+        simple-audio-card,mclk-fs = <256>;
+        simple-audio-card,bitclock-master = <&codec_dai>;
+        simple-audio-card,frame-master = <&codec_dai>;
+
+
+        simple-audio-card,cpu {
+            sound-dai = <&i2s0>;
+        };
+        
+        codec_dai: simple-audio-card,codec {
+            sound-dai = <&ext_codec>;
+        };
+    };
 };
 
 &emac {
@@ -78,7 +97,18 @@
                 compatible = "dallas,ds1307";
                 reg = <0x68>;
         };
+
+    ext_codec: cx2092x@41 {
+        #sound-dai-cells = <1>;
+        compatible = "cnxt,cx20924";
+        reg = <0x41>;
+        status = "okay";
+    };
 };
+
+&i2s0 {
+    status = "okay";    
+}
 
 &mmc1 {
     pinctrl-names = "default";
