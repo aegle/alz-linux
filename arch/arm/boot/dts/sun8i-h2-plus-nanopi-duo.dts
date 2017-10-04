@@ -108,7 +108,7 @@
 
 &i2s0 {
     status = "okay";    
-}
+};
 
 &mmc1 {
     pinctrl-names = "default";
