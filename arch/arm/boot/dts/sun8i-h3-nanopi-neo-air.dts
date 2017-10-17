@@ -63,7 +63,35 @@
         rfkill-name = "sunxi-bt";
         rfkill-type = "bluetooth";
     };
+
+    sound {
+        status = "okay";
+        compatible = "simple-audio-card";
+        simple-audio-card,name = "cx2092x";
+        simple-audio-card,format = "i2s";
+        simple-audio-card,mclk-fs = <256>;
+        simple-audio-card,bitclock-master = <&codec_dai>;
+        simple-audio-card,frame-master = <&codec_dai>;
+
+        simple-audio-card,routing =
+            "Mic Jack", "Mic AIF"; //routing audio card output to H3 Mic
+        simple-audio-card,widgets =
+            "Headphone", "Headphone Jack",
+            "Line", "Line In Jack",
+            "Line", "Line Out Jack",
+            "Microphone", "Mic Jack";
+
+        simple-audio-card,cpu {
+            sound-dai = <&i2s0>;
+        };
+        
+        codec_dai: simple-audio-card,codec {
+            sound-dai = <&ext_codec>;
+        };
+    };
+    
 };
+
 
 &pio {
     bt_pwr_pin: bt_pwr_pin@0 {
@@ -115,14 +143,32 @@
     bias-pull-up;
 };
 
-&i2c0 {
+&codec {
+    allwinner,audio-routing =
+        "Speaker", "LINEOUT",
+        "LINEIN", "Line In",
+        "MIC1", "MBIAS",
+        "MIC1", "Mic",
+        "MIC2", "Headset Mic";
     status = "okay";
 };
 
-&i2c1 {
-    /* no I2C1 for I2S0 */
+
+&i2c0 {
     status = "okay";
+
+    ext_codec: cx2092x@41 {
+        #sound-dai-cells = <0>;
+        compatible = "cnxt,cx20924";
+        reg = <0x41>;
+        status = "okay";
+    };    
 };
+
+/* &i2c1 {
+    //no I2C1 for I2S0
+    status = "okay";
+};*/
 
 &i2c2 {
     status = "okay";
@@ -135,6 +181,7 @@
 };
 
 &i2s0 {
-    sound-dai = <&pcm5102a>;
-    status = "disabled";
+    pinctrl-names = "default";
+    pinctrl-0 = <&i2s0_bclk>, <&i2s0_lrclk>, <&i2s0_sdo0>, <&i2s0_sdi>;
+    status = "okay";
 };
