@@ -181,5 +181,7 @@
 };
 
 &i2s0 {
+    pinctrl-names = "default";
+    pinctrl-0 = <&i2s0_bclk>, <&i2s0_lrclk>, <&i2s0_sdo0>, <&i2s0_sdi>;
     status = "okay";
 };
