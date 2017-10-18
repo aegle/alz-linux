@@ -43,8 +43,8 @@
 #include "sun8i-h3-nanopi.dtsi"
 
 / {
-	model = "FriendlyElec NanoPi-NEO-Air";
-	compatible = "friendlyarm,nanopi-neo-air", "allwinner,sun8i-h3";
+    model = "FriendlyElec NanoPi-NEO-Air";
+    compatible = "friendlyarm,nanopi-neo-air", "allwinner,sun8i-h3";
 
     wifi_pwrseq: wifi_pwrseq {
         compatible = "mmc-pwrseq-simple";
@@ -108,22 +108,22 @@
 };
 
 &mmc1 {
-	pinctrl-names = "default";
-	pinctrl-0 = <&mmc1_pins_a>;
-	vmmc-supply = <&reg_vcc3v3>;
-	vqmmc-supply = <&reg_vcc3v3>;
-	mmc-pwrseq = <&wifi_pwrseq>;
-	bus-width = <4>;
-	non-removable;
-	status = "okay";
+    pinctrl-names = "default";
+    pinctrl-0 = <&mmc1_pins_a>;
+    vmmc-supply = <&reg_vcc3v3>;
+    vqmmc-supply = <&reg_vcc3v3>;
+    mmc-pwrseq = <&wifi_pwrseq>;
+    bus-width = <4>;
+    non-removable;
+    status = "okay";
 
-	brcmf: bcrmf@1 {
-		reg = <1>;
-		compatible = "brcm,bcm4329-fmac";
-		interrupt-parent = <&pio>;
-		interrupts = <6 10 IRQ_TYPE_LEVEL_LOW>; /* PG10 / EINT10 */
-		interrupt-names = "host-wake";
-	};
+    brcmf: bcrmf@1 {
+        reg = <1>;
+        compatible = "brcm,bcm4329-fmac";
+        interrupt-parent = <&pio>;
+        interrupts = <6 10 IRQ_TYPE_LEVEL_LOW>; /* PG10 / EINT10 */
+        interrupt-names = "host-wake";
+    };
 };
 
 &mmc2 {
