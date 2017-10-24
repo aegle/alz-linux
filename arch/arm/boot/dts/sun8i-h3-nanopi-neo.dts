@@ -88,10 +88,10 @@
     };
 };
 
-&i2c1 {
-    /* no I2C1 for I2S0 */
+/*&i2c1 {
+    // no I2C1 for I2S0
     status = "okay";
-};
+};*/
 
 &i2s0 {
     status = "okay";    
