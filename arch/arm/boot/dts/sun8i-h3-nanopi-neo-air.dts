@@ -73,14 +73,6 @@
         simple-audio-card,bitclock-master = <&codec_dai>;
         simple-audio-card,frame-master = <&codec_dai>;
 
-        simple-audio-card,routing =
-            "Mic Jack", "Mic AIF"; //routing audio card output to H3 Mic
-        simple-audio-card,widgets =
-            "Headphone", "Headphone Jack",
-            "Line", "Line In Jack",
-            "Line", "Line Out Jack",
-            "Microphone", "Mic Jack";
-
         simple-audio-card,cpu {
             sound-dai = <&i2s0>;
         };
