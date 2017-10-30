@@ -393,6 +393,7 @@
 			i2c1_pins: i2c1 {
 				pins = "PA18", "PA19";
 				function = "i2c1";
+				bias-pull-up;
 			};
 
 			i2c2_pins: i2c2 {

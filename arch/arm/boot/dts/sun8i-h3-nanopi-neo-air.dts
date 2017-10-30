@@ -63,25 +63,43 @@
         rfkill-name = "sunxi-bt";
         rfkill-type = "bluetooth";
     };
-
-    sound {
+    pcm1798: pcm1798 {
+        compatible = "ti,pcm1798";
+        #sound-dai-cells = <0>;
+    };
+    sound0@0 {
         status = "okay";
         compatible = "simple-audio-card";
         simple-audio-card,name = "cx2092x";
         simple-audio-card,format = "i2s";
         simple-audio-card,mclk-fs = <256>;
-        simple-audio-card,bitclock-master = <&codec_dai>;
-        simple-audio-card,frame-master = <&codec_dai>;
+        simple-audio-card,bitclock-master = <&codec_dai1>;
+        simple-audio-card,frame-master = <&codec_dai1>;
 
         simple-audio-card,cpu {
             sound-dai = <&i2s0>;
         };
         
-        codec_dai: simple-audio-card,codec {
+        codec_dai1: simple-audio-card,codec {
             sound-dai = <&ext_codec>;
         };
     };
-    
+    sound1@1 {
+        compatible = "simple-audio-card";       
+        simple-audio-card,name = "pcm1798-i2s";
+        simple-audio-card,format = "i2s";
+        simple-audio-card,mclk-fs = <256>;
+        simple-audio-card,bitclock-master = <&codec_dai2>;
+        simple-audio-card,frame-master = <&codec_dai2>;
+
+        simple-audio-card,cpu {
+            sound-dai = <&i2s0>;
+        };
+        
+        codec_dai2: simple-audio-card,codec {
+            sound-dai = <&pcm1798>;
+        };
+    };
 };
 
 
