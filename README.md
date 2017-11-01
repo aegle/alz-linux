@@ -38,12 +38,12 @@ Alz.ai's fork of FE fork of Linux kernel
 
 ### Preparing a SD Card (Using dibs image) where /k/ is /yourusername/
 * `cd ~/alz-linux/arch/arm/boot/`
-* `sudo cp -R zImage /run/media/k/boot/`
-* `sudo cp -R Image /run/media/k/boot/`
+* `sudo cp -R zImage /media/k/boot/`
+* `sudo cp -R Image /media/k/boot/`
 * `cd ~/alz-linux/arch/arm/boot/dts`
-* `sudo cp -R sun8i-alz-nanopi-neo-air.dtb /run/media/k/boot/`
+* `sudo cp -R sun8i-h3-nanopi-neo-air.dtb /media/k/boot/`
 * `cd ~/alz-linux/MODULES/`
-* `sudo cp -R lib/ /run/media/k/rootfs/`
+* `sudo cp -R lib/ /media/k/rootfs/`
 * `cd ~/dibs/`
 * `fakeroot sudo tar -xzf alz-duo.tar.gz -C /run/media/k/rootfs/`
 
