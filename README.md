@@ -20,11 +20,11 @@ Alz.ai's fork of FE fork of Linux kernel
 * Configuring
 	* `make menuconfig ARCH=arm CROSS_COMPILE=arm-linux-`
 * All in one command:
-	* `make zImage dtbs modules modules_install INSTALL_MOD_PATH=~/h3-linux/built_modules ARCH=arm CROSS_COMPILE=arm-linux-`
+	* `make zImage dtbs modules modules_install INSTALL_MOD_PATH=~/alz-linux/built_modules ARCH=arm CROSS_COMPILE=arm-linux-`
 * Or individually:
 	* `make zImage dtbs ARCH=arm CROSS_COMPILE=arm-linux-`
 	* `make modules ARCH=arm CROSS_COMPILE=arm-linux-`
-	* `make modules_install INSTALL_MOD_PATH=~/h3-linux/MODULES ARCH=arm CROSS_COMPILE=arm-linux-`
+	* `make modules_install INSTALL_MOD_PATH=~/alz-linux/MODULES ARCH=arm CROSS_COMPILE=arm-linux-`
 
 ### U-boot
 * `cd ~`
@@ -37,12 +37,12 @@ Alz.ai's fork of FE fork of Linux kernel
 * `sudo dd if=u-boot-sunxi-with-spl.bin of=/dev/mmcblk0 bs=1024 seek=8`
 
 ### Preparing a SD Card (Using dibs image) where /k/ is /yourusername/
-* `cd ~/h3-linux/arch/arm/boot/`
+* `cd ~/alz-linux/arch/arm/boot/`
 * `sudo cp -R zImage /run/media/k/boot/`
 * `sudo cp -R Image /run/media/k/boot/`
-* `cd ~/h3-linux/arch/arm/boot/dts`
-* `sudo cp -R sun8i-h3-nanopi-neo-air.dtb /run/media/k/boot/`
-* `cd ~/h3-linux/MODULES/`
+* `cd ~/alz-linux/arch/arm/boot/dts`
+* `sudo cp -R sun8i-alz-nanopi-neo-air.dtb /run/media/k/boot/`
+* `cd ~/alz-linux/MODULES/`
 * `sudo cp -R lib/ /run/media/k/rootfs/`
 * `cd ~/dibs/`
 * `fakeroot sudo tar -xzf alz-duo.tar.gz -C /run/media/k/rootfs/`
