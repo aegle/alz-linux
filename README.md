@@ -11,6 +11,8 @@ Alz.ai's fork of FE fork of Linux kernel
 	* `nano ~/.bashrc`
 	* `export PATH=/opt/FriendlyARM/toolchain/4.9.3/bin:$PATH`
 	* `export GCC_COLORS=auto`
+### Requirements
+* `sudo apt-get install python device-tree-compiler build-essential libncurses5-dev`
 
 ### Building
 * `touch .scmversion`
@@ -26,6 +28,7 @@ Alz.ai's fork of FE fork of Linux kernel
 
 ### U-boot
 * `cd ~`
+* `sudo apt-get install python device-tree-compiler`
 * `git clone https://github.com/friendlyarm/u-boot.git`
 * `cd u-boot`
 * `git checkout sunxi-v2017.x`
@@ -46,7 +49,6 @@ Alz.ai's fork of FE fork of Linux kernel
 
 ### Todo:
 
-### Potential issues:
-*make menuconfig may fail if libncurses5-dev is not installed
-	*run `sudo apt-get install libncurses5-dev` to fixspeaker-test -c 2 -r 44100 -D hw:1,0
+### Notes:
+* run `speaker-test -c 2 -r 44100 -D hw:1,0` to test speakers
 *`fakeroot sudo tar -xzpf alz-duo.tar.gz -C /run/media/k/rootfs/` may be better, but has sometimes caused issues. Should investigate
