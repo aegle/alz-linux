@@ -12,7 +12,7 @@ Alz.ai's fork of FE fork of Linux kernel
 	* `export PATH=/opt/FriendlyARM/toolchain/4.9.3/bin:$PATH`
 	* `export GCC_COLORS=auto`
 ### Requirements
-* `sudo apt-get install python device-tree-compiler build-essential libncurses5-dev`
+* `sudo apt-get install python device-tree-compiler build-essential libncurses5-dev libssl-dev bison flex`
 
 ### Building
 * `touch .scmversion`
